@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title id="title-tag">Hello universe!</title>
+   <script type="text/javascript">
+   // Ask the user for his/her honorific title.
+   var title = prompt ( 'Please, enter Ms. Msr. or Mr.:' );
+   // Ask the user for his/her first name.
+   var first_name = prompt ( 'Please, enter your first name:' );
+   // Ask the user for his/her last name.
+   var last_name = prompt ( 'Please, enter your last name:' );
+   // All `prompt` inputs are stored into a variable `salute`, as the value will be used more than once.
+   var salute = 'Hello, ' + title + ' ' + first_name + ' ' + last_name;
+   // say personalized hello
+   alert( salute );
+   // Change browser title line
+   // We need to modify the text of the <title> tag
+   document.getElementById("title-tag").innerHTML = salute;
+   </script>
+</head>
+<body>
+
+</body>
+</html>
