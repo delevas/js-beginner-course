@@ -36,12 +36,10 @@
          };		
          // Create global `storage` getter with a check to return value only if the key is defined 		 
          storage.get = function (check) {
-            if (check == data[0]) { 
-               return data[1];
-	    }
-	    else {
-	       return undefined;
-	    };
+            switch ( true ) {
+               case check == data[0]: return data[1];
+               case check != data[0]: return undefined;
+            };
          };
    })();
    </script>
