@@ -27,21 +27,20 @@
    **/
    var storage = new Object();
    (function() {
-      // Create key and value variables invisible outside this function
-      var key;
-      var value;
-         // Create global `storage` setter
+      // Create object data invisible outside this function
+      var data = {key:'', value:''};
+         // Create global `storage` setter	 
          storage.set = function (k, v) {
-            key = k;
-            value = v; 
-         };
-         // Create global `storage` getter with a check to return value only if the key is defined
+            data[0] = k;
+            data[1] = v;
+         };		
+         // Create global `storage` getter with a check to return value only if the key is defined 		 
          storage.get = function (check) {
-            if (check == key) { 
-               return value;
-            }
-            else {
-               return undefined;
+            if (check == data[0]) { 
+               return data[1];
+	    }
+	    else {
+	       return undefined;
 	    };
          };
    })();
