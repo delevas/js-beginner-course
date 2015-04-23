@@ -6,35 +6,17 @@
    function typeOf( variable ) {
       // calculations
       switch ( true ) {
-         case typeof variable == 'undefined':
-            var type = 'undefined';
-            break;
-         case variable == null:
-            var type = 'null';
-            break;
-         case typeof variable.constructor() == typeof 'string':
-            var type = 'string';
-            break;
-         case typeof variable.constructor() == typeof true:
-            var type = 'boolean';
-            break;
-         case variable.constructor == Array:
-            var type = 'array';
-            break;
-         case variable.constructor == Object:
-            var type = 'object';
-            break;
-         case isNaN(variable) === isNaN(NaN):
-            var type = 'NaN';
-            break;
-         case typeof variable.constructor() == typeof 0:
-            var type = 'number';
-            break;
+         case typeof variable == 'undefined': return 'undefined';
+         case variable == null: return 'null';
+         case typeof variable.constructor() == typeof 'string': return 'string';
+         case typeof variable.constructor() == typeof true: return 'boolean';
+         case variable.constructor == Array: return 'array';
+         case variable.constructor == Object: return 'object';
+         case isNaN(variable) === isNaN(NaN): return 'NaN';
+         case typeof variable.constructor() == typeof 0: return 'number';
          default:
-            // var type = 'NaN';
             console.log('There is no match!');
       }
-      return type;
    }
    
    // our test cases
