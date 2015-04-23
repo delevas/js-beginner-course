@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>typeOf</title>
+   <script type="text/javascript">
+   function typeOf( variable ) {
+      // calculations
+      switch ( true ) {
+         case typeof variable == 'undefined':
+            var type = 'undefined';
+            break;
+         case variable == null:
+            var type = 'null';
+            break;
+         case typeof variable.constructor() == typeof 'string':
+            var type = 'string';
+            break;
+         case typeof variable.constructor() == typeof true:
+            var type = 'boolean';
+            break;
+         case variable.constructor == Array:
+            var type = 'array';
+            break;
+         case variable.constructor == Object:
+            var type = 'object';
+            break;
+         case isNaN(variable) === isNaN(NaN):
+            var type = 'NaN';
+            break;
+         case typeof variable.constructor() == typeof 0:
+            var type = 'number';
+            break;
+         default:
+            // var type = 'NaN';
+            console.log('There is no match!');
+      }
+      return type;
+   }
+   
+   // our test cases
+   var types = {
+      'undefined' : [ undefined ],
+      'null'      : [ null ],
+      'NaN'       : [ NaN ],
+      'boolean'   : [ false, new Boolean(true) ],
+      'string'    : [ 'lorem', new String('null') ],
+      'number'    : [ 1, new Number(0) ],
+      'array'     : [ [] ],
+      'object'    : [ {} ]
+   };
+   for ( var type in types ) {
+      types[ type ].forEach( function ( item ) {
+         var result = typeOf( item );
+         console.assert(
+            result === type, 
+            item + ' is reported as "' + result + '", but expected type is "' +
+                  type + '"'
+         );
+      });
+   }
+   </script>
+</head>
+<body>
+
+</body>
+</html>
