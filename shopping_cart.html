@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Shopping Cart</title>
+   <script type="text/javascript">
+      var shopping_cart = [
+         { product : 'T-shirt', price : 10 },
+         { product : 'Jeans', price : 69.9 },
+         { product : 'Jacket', price : 119.99 }
+      ];
+
+      // Accepts Object as parameter
+      function walkTheObject( obj ) {
+         
+         var product_name, product_price;
+         
+         // Go through each element in a given object
+         for ( el in obj ) {
+            if ( obj.hasOwnProperty(el) ) {
+               // Assign product name and price to different variables where for the price two digits appear after the decimal point
+               typeof obj[el] == typeof 0 ? product_price = obj[el].toFixed(2) : product_name = obj[el];
+            }
+         }
+         
+         // Array containing the product data
+         var product_data = [product_name, product_price];
+         // Calculate the needed space to separate product's name and price in the output and make sure the width of the line is max 65 characters 
+         var space = Array(66 - product_data.join().length).join(' ');
+         product_data = product_data.join(space);
+         console.log(product_data);
+         
+      }
+      
+      // Go through each object element in shopping_cart array and pass it as a parameter to walkTheObject function
+      for (var i=0, l=shopping_cart.length; i<l; i++) {
+         walkTheObject(shopping_cart[i]);
+      }
+   </script>
+</head>
+<body>
+
+</body>
+</html>
