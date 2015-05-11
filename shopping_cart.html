@@ -25,7 +25,7 @@
          // Array containing the product data
          var product_data = [product_name, product_price];
          // Calculate the needed space to separate product's name and price in the output and make sure the width of the line is max 65 characters 
-         var space = Array(66 - product_data.join().length).join(' ');
+         var space = new Array(66 - product_data.join().length).join(' ');
          product_data = product_data.join(space);
          console.log(product_data);
          
