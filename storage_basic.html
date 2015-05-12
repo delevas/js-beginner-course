@@ -26,30 +26,34 @@
     * 
    **/
 
-   // global variable storage holds anonymous function to create encapsulation
-   var storage = (function() {
+   // global storage object
+   var storage = {};
+   
+   // anonymous function to create encapsulation
+   (function() {
       // private variable to store the given data in an object
       var private_storage = {};
-      return {
-         /**
-          * get method to display stored data
-          * @param {String} key
-          * returns the stored value of 'key' or undefined
-         **/
-         get: function ( key ) {
-            if ( private_storage.hasOwnProperty(key) ) {
-               return private_storage[key];
-            }
-            return;
-         },
-         /** set method to store given data
-          * @param {String} key
-          * @param {Mixed} value
-         **/
-         set: function ( key, value ) {
-            private_storage[key] = value;
+      
+      /**
+       * get method to display stored data
+       * @param {String} key
+       * returns the stored value of 'key' or undefined
+      **/
+      storage.get = function ( key ) {
+         if ( private_storage.hasOwnProperty(key) ) {
+            return private_storage[key];
          }
-      }
+         return;
+      };
+
+      /** set method to store given data
+       * @param {String} key
+       * @param {Mixed} value
+      **/
+      storage.set = function ( key, value ) {
+         private_storage[key] = value;
+      };
+      
    })();
 
    </script>
