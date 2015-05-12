@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Storage (basic)</title>
+   <script type="text/javascript">
+   /** 
+    * Requirements
+    * 
+    * Create a single object that will play the role of a Local Storage.
+    * This object must implement the following 2 methods (functions):
+    * 
+    *    - set( 'key', 'value' ) stores the property 'key' with the value 'value'
+    *    - get('key')            returns the stored value of 'key' or undefined
+    * 
+    * Usage:
+    * 
+    * storage.set( 'foo', 'bar' );     // we set a new key with value "bar"
+    * storage.set( 'foo', 'foobar' );  // we overwrite the stored value of "foo"
+    * 
+    * storage.get('foo');              // returns "foobar"
+    * storage.get('unknown');          // returns undefined
+    * 
+    * storage.foo;                     // returns undefined - we should not keep the
+    *                                  // stored data as property of the `storage`
+    *                                  // object
+    * 
+   **/
+
+   // global variable storage holds anonymous function to create encapsulation
+   var storage = (function() {
+      // private variable to store the given data in an object
+      var private_storage = {};
+      return {
+         /**
+          * get method to display stored data
+          * @param {String} key
+          * returns the stored value of 'key' or undefined
+         **/
+         get: function ( key ) {
+            if ( private_storage.hasOwnProperty(key) ) {
+               return private_storage[key];
+            }
+            return;
+         },
+         /** set method to store given data
+          * @param {String} key
+          * @param {String} value
+         **/
+         set: function ( key, value ) {
+            private_storage[key] = value;
+         }
+      }
+   })();
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>
