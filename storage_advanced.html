@@ -28,8 +28,8 @@
                // if false output notification 
                console.log('The key "' + keys[i] + '" does not exist.');
          }
-         // returns array of values
-         return values;
+         // returns a string of joined values from the values array
+         return values.join(', ');
       };
       this.setMultiple = function ( pairs ) {
          // accepts an object of key:values and for each pair sets
@@ -75,7 +75,7 @@
       gender   : 'male'
    });
    console.assert( storage.get('age') == 28, 'The `age` is NOT properly set to 28' );
-   console.assert( storage.getMultiple([ 'name', 'gender' ]).toString() == 'Hristo,male', '`name` and `gender` DO NOT have "Hristo" and "male" values' );
+   console.assert( storage.getMultiple([ 'name', 'gender' ]).toString() == 'Hristo, male', '`name` and `gender` DO NOT have "Hristo" and "male" values' );
    console.assert( typeof( storage.gender ) == 'undefined', 'Properties set via `setMultiple` are NOT encapsulated' );
 
    // properties set directly should not affect the storage
