@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Bind in IE8</title>
+   <script type="text/javascript">
+
+   if ( ! Function.prototype.bind ) {
+      Function.prototype.bind = function ( obj ) {
+         // implementation here
+         if (typeof this !== 'function') {
+         // internal IsCallable function
+            throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+         }
+
+         function fNOP() {}
+         var aArgs  = [].slice.call(arguments, 1),
+            fToBind = this,
+            fBound  = function() {
+               return fToBind.apply(this instanceof fNOP
+                  ? this
+                  : obj,
+                  aArgs.concat([].slice.apply(arguments)));
+            };
+
+         fNOP.prototype = this.prototype;
+         fBound.prototype = new fNOP();
+
+         return fBound;
+      }
+   }
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>
