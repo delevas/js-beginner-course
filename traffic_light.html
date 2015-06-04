@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Traffic Light</title>
+   <script type="text/javascript">
+   // Implementation
+   
+   // Method getRandom
+   // Accepts array as parameter
+   // Returns an element on random position in the given array
+   function getRandom( array ) {
+      var random = array[Math.floor(Math.random() * array.length)];
+      return random;
+   }
+   
+   // Base Light class
+   function Light( color ) {
+      this.color = color;
+      // method to turn the light on
+      this.on = function() {
+         console.log( this.color + " is turned ON.");
+      };
+      // method to turn the light off
+      this.off = function() {
+         console.log( this.color + " is turned OFF."); 
+      };
+   }
+   
+   // Base TrafficLight Class
+   function TrafficLight( type ) {
+      // array of types to choose from if type not defined
+      var types = ['pedestrians', 'cars'];
+      this.type = type || getRandom(types);
+      
+      // object containing instances of Light base class
+      this.light = {
+         red : new Light('Red'),
+         green : new Light('Green')
+      };
+      
+      // method to check and output the type of the traffic light
+      this.getType = function() {
+         console.info('Traffic Light for ' + this.type + '.');
+      }
+      
+      this.getType();
+      
+      // method to check the given type for the traffic light and 
+      // include instance of yellow light in this.light object
+      this.checkType = function() {
+         // if the traffic light is for cars it will have yellow light
+         if ( this.type.toLowerCase() == 'cars' ) {
+            this.light.yellow = new Light('Yellow');
+            return this.light.yellow.off();
+         }
+         return;
+      };
+      
+      // method to turn on the red light of the traffic light
+      this.stop = function() {
+         this.getType();
+         this.light.green.off();
+         this.checkType();
+         this.light.red.on();
+      };
+      
+      // method to turn on the green light of the traffic light
+      this.go = function() {
+         this.getType();
+         this.light.green.on();
+         this.checkType();
+         this.light.red.off();
+      }
+   }
+   
+   </script>
+</head>
+<body>
+
+</body>
+</html>
