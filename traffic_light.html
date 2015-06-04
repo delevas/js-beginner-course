@@ -56,21 +56,24 @@
          return;
       };
       
+      // private method to swtich the lights depending on the passed parameter for method
+      var action = (function( method ) {
+         this.getType();
+         method == 'go' ? this.light.green.on() : this.light.green.off();
+         this.checkType();
+         method == 'stop' ? this.light.red.on() : this.light.red.off();
+      }).bind( this );
+      
       // method to turn on the red light of the traffic light
       this.stop = function() {
-         this.getType();
-         this.light.green.off();
-         this.checkType();
-         this.light.red.on();
+         action( 'stop' );
       };
       
       // method to turn on the green light of the traffic light
       this.go = function() {
-         this.getType();
-         this.light.green.on();
-         this.checkType();
-         this.light.red.off();
-      }
+         action( 'go' );
+      };
+
    }
    
    </script>
