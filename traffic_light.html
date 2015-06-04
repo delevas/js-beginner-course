@@ -45,22 +45,17 @@
       
       this.getType();
       
-      // method to check the given type for the traffic light and 
-      // include instance of yellow light in this.light object
-      this.checkType = function() {
-         // if the traffic light is for cars it will have yellow light
-         if ( this.type.toLowerCase() == 'cars' ) {
-            this.light.yellow = new Light('Yellow');
-            return this.light.yellow.off();
-         }
-         return;
-      };
-      
       // private method to swtich the lights depending on the passed parameter for method
       var action = (function( method ) {
          this.getType();
          method == 'go' ? this.light.green.on() : this.light.green.off();
-         this.checkType();
+
+         // check if traffic light for cars and add instance of yellow light in this.light object 
+         if ( this.type.toLowerCase() == 'cars' ) {
+            this.light.yellow = new Light('Yellow');
+            this.light.yellow.off();
+         }
+
          method == 'stop' ? this.light.red.on() : this.light.red.off();
       }).bind( this );
       
